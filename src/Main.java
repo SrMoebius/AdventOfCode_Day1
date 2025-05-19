@@ -11,6 +11,41 @@ public class Main {
         //first of all, we read the txt with all the inputs of both lists.
         ArrayList<Integer> leftList = new ArrayList<>();
         ArrayList<Integer> rightList = new ArrayList<>();
+
+        part1(leftList, rightList);
+        part2(leftList, rightList);
+
+
+
+    }
+
+    private static void part2(ArrayList<Integer> leftList, ArrayList<Integer> rightList) {
+
+        int totalSimilarityScore = 0;
+
+        for (int i = 0; i < leftList.size(); i++) {
+
+            int similarityScore = calculateSimilarity(leftList.get(i), rightList);
+            totalSimilarityScore += leftList.get(i) * similarityScore;
+        }
+
+        System.out.println("The total similarity score of both lists is: " + totalSimilarityScore);
+
+    }
+
+    private static int calculateSimilarity(int number, ArrayList<Integer> rightList) {
+
+        int score = 0;
+        for (int i = 0; i < rightList.size(); i++) {
+            if (number == rightList.get(i)) {
+                score++;
+            }
+        }
+        return score;
+    }
+
+    private static void part1(ArrayList<Integer> leftList, ArrayList<Integer> rightList) {
+
         readTxt(leftList, rightList);
 
         Collections.sort(leftList);
